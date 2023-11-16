@@ -4,10 +4,7 @@
  * free_pointer - Frees memory allocated to a pointer and sets it to NULL.
  * @pointer: A pointer to a pointer whose memory needs to be freed.
  *
- * Func frees the memory allocated to ptr pointed to by `pointer`
- * using the `free()` function and sets ptr to NULL to avoid dangling ptrs
- *
- * Return: 1 upon successful memory deallocation,
+ * Return: 1 if freed,
  * otherwise 0,if the pointer is NULL or points to NULL.
  */
 
@@ -51,14 +48,6 @@ void free_array_pointers(char **parray)
  * @pointer: Pointer to the block of memory to be reallocated.
  * @old_size: Size of the old block of memory.
  * @new_size: Size of the new block of memory.
- *
- * If 'pointer' is NULL, it allocates new block of memory of 'new_size' bytes.
- * If 'new_size' is 0, it frees memory allocated to 'pointer' and returns NULL.
- * If 'new_size' is equal to 'old_size', returns the original 'pointer' without
- * performing any reallocation.
- * Otherwise, it allocates new block of memory of 'new_size' bytes,
- * copies contents of old block to new block,
- * frees old block, and returns pointer to new block of memory.
  *
  * Return: pointer to newly allocated memory block.(success)
  * If fails or if 'pointer' is NULL and 'new_size' is not 0, returns NULL.

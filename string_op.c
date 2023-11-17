@@ -36,7 +36,7 @@ int convert_s_to_int(char *s)
 }
 
 /**
- * is_delim - Checks if a character is a delim within a string of delimiters.
+ * _is_delim - Checks if a character is a delim within a string of delimiters.
  * @check_c: The character to be checked for being a delimiter.
  * @delim: Pointer to a string containing a set of delimiter characters.
  *
@@ -44,7 +44,7 @@ int convert_s_to_int(char *s)
  * otherwise, returns 0.
  */
 
-int is_delim(char check_c, char *delim)
+int _is_delim(char check_c, char *delim)
 {
 	while (*delim)
 		if (*delim++ == check_c)
@@ -53,14 +53,14 @@ int is_delim(char check_c, char *delim)
 }
 
 /**
- * _isalpha - Checks if a character is an alphabetic character.
+ * _is_alpha - Checks if a character is an alphabetic character.
  * @check_c: The character to be checked for alphabetic status.
  *
  * Return: 1 if 'check_c' is an alphabetic character (A-Z or a-z);
  * otherwise, returns 0.
  */
 
-int _isalpha(int check_c)
+int _is_alpha(int check_c)
 {
 	if ((check_c >= 'a' && check_c <= 'z') || (check_c >= 'A' && check_c <= 'Z'))
 		return (1);
@@ -69,7 +69,7 @@ int _isalpha(int check_c)
 }
 
 /**
- * strcpy - Copies up to 'n' characters from 'src' string to 'target' string.
+ * _strn_cpy - Copies up to 'n' characters from 'src' str to 'target' str
  * @target: Pointer to target string where contents from 'src' will be copied.
  * @src: Pointer to the source string from which characters will be copied.
  * @n: Maximum number of chars to copy from 'src' (including null-terminator).
@@ -77,7 +77,7 @@ int _isalpha(int check_c)
  * Return: Pointer to 'target' string where characters were copied from 'src'
  */
 
-char *strcpy(char *target, char *src, int n)
+char *_strn_cpy(char *target, char *src, int n)
 {
 	int i, j;
 	char *s = target;
@@ -100,31 +100,3 @@ char *strcpy(char *target, char *src, int n)
 	return (s);
 }
 
-/**
- * strcat - Appends up to 'n' characters from 'src' string to 'target' string.
- * @target: Pointer to target str to which contents from 'src' will be appended
- * @src: Pointer to source string whose characters will be appended to 'target'
- * @n: Maximum number of chars to append from 'src' (including null-terminator)
- *
- * Return: Pointer to the 'target' string with appended characters from 'src'
- */
-
-char *strcat(char *target, char *src, int n)
-{
-	int i, j;
-	char *s = target;
-
-	i = 0;
-	j = 0;
-	while (target[i] != '\0')
-		i++;
-	while (src[j] != '\0' && j < n)
-	{
-		target[i] = src[j];
-		i++;
-		j++;
-	}
-	if (j < n)
-		target[i] = '\0';
-	return (s);
-}

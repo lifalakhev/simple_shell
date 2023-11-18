@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * is_file - Checks if the given path corresponds to a regular file.
+ * is_file - a function that Checks if the given path corresponds to a regular file.
  * @info: Unused pointer to information data (info_t structure).
  * @path: Pointer to a string representing the file path to check.
  *
@@ -24,7 +24,7 @@ int is_file(info_t *info, char *path)
 }
 
 /**
- * find_path - Finds a command within a colon-separated list of paths.
+ * find_path - a function that Finds a command within a colon-separated list of paths.
  * @info: Pointer to information data (info_t structure).
  * @str_path: Pointer to a string containing colon-separated paths.
  * @cmd: Pointer to the command to find within the paths.
@@ -68,7 +68,7 @@ char *find_path(info_t *info, char *str_path, char *cmd)
 }
 
 /**
- * duplicate_chars - Copies characters from specified range in string to buffer
+ * duplicate_chars - a Function that Copies characters from specified range in string to buffer
  * @str_path: Pointer to the string containing the characters.
  * @start: Starting index in the string to begin copying characters.
  * @stop: Stopping index in the string to stop copying characters (exclusive).

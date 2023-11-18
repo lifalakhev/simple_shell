@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * retrieve_histfile - gets the history file.
+ * retrieve_histfile - this program gets the history file.
  * @info: parameter struct.
  *
  * Return: allocated string containg history file.

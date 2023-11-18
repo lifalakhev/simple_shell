@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * lvput_fd - Writes a character to a file descriptor with line buffering.
+ * lvput_fd - Program that Writes a character to a file descriptor with line buffering.
  * @c: The character to be written
  * @file_des: The file descriptor to write to.
  *
@@ -24,7 +24,7 @@ int lvput_fd(char c, int file_des)
 }
 
 /**
- * lvputs_fd - Writes a string to a file descriptor with line buffering.
+ * lvputs_fd - Program that Writes a string to a file descriptor with line buffering.
  * @str: The string to be written.
  * @file_des: The file descriptor to write to.
  *
@@ -44,7 +44,7 @@ int lvputs_fd(char *str, int file_des)
 }
 
 /**
- * _ltputchar - Writes a character to the standard error with line buffering.
+ * _ltputchar - Programm that Writes a character to the standard error with line buffering.
  * @c: The character to be written.
  *
  * Return: On success, returns 1; On failure, returns EOF.
@@ -66,7 +66,7 @@ int _ltputchar(char c)
 }
 
 /**
- * _ltputs - Prints a string followed by a newline to the standard output0
+ * _ltputs - Program that Prints a string followed by a newline to the standard output0
  * @str: The string to be printed.
  *
  * Return: Nothing

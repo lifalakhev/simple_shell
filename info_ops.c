@@ -10,7 +10,7 @@ void set_info(info_t *info, char **argv)
 {
 	int i = 0;
 
-	info->fname = argv[0];
+	info->fileName = argv[0];
 	if (info->arg)
 	{
 		info->argv = str_tow(info->arg, " \t");
@@ -20,7 +20,7 @@ void set_info(info_t *info, char **argv)
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
-				info->argv[0] = str_duplic(info->arg);
+				info->argv[0] = _str_dup(info->arg);
 				info->argv[1] = NULL;
 			}
 		}
@@ -28,8 +28,8 @@ void set_info(info_t *info, char **argv)
 			;
 		info->argc = i;
 
-		replace_alias(info);
-		replace_vars(info);
+		replace_cmd_alias(info);
+		replace_varsa(info);
 	}
 }
 
@@ -59,7 +59,7 @@ void free_info(info_t *info, int all)
 	info->path = NULL;
 	if (all)
 	{
-		if (!info->cmd_buf)
+		if (!info->cmd_buffer)
 			free(info->arg);
 		if (info->env)
 			free_list(&(info->env));
@@ -69,9 +69,9 @@ void free_info(info_t *info, int all)
 			free_list(&(info->alias));
 		free_array_pointers(info->environ);
 		info->environ = NULL;
-		free_pointer((void **)info->cmd_buf);
+		free_pointer((void **)info->cmd_buffer);
 		if (info->read_file_des > 2)
 			close(info->read_file_des);
-		_putchar(BUF_FLUSH);
+		_put_char(BUF_FLUSH);
 	}
 }

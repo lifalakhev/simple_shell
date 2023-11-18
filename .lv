@@ -1,0 +1,7 @@
+cd
+ls
+clear
+mkdir
+exit
+gcc
+betty

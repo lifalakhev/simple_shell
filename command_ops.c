@@ -23,29 +23,28 @@ int exec_cd(info_t *info)
 		else
 			chdir_return = chdir(hd);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (_str_cmp(info->argv[1], "-") == 0)
 	{
 		if (!get_env_var(info, "OLDPWD="))
 		{
 			_lvprint(cur_dir);
-			_putchar('\n');
+			_put_char('\n');
 			return (1);
 		}
-		_lvprint(get_env_var(info, "OLDPWD=")), _putchar('\n');
-		chdir_return = chdir((get_env_var(info, "OLDPWD=")) ?
-				get_env_var(info, "OLDPWD=") : "/");
+		_lvprint(get_env_var(info, "OLDPWD=")), _put_char('\n');
+		chdir_return = chdir((hd = get_env_var(info, "OLDPWD=")) ? hd : "/");
 	}
 	else
 		chdir_return = chdir(info->argv[1]);
 			if (chdir_return == -1)
 			{
 				print_error(info, "Failed to change directory to ");
-				_ltput(info->argv[1]), _ltputchar('\n');
+				_ltputs(info->argv[1]), _ltputchar('\n');
 			}
 			else
 			{
-				unset_custom_env(info, "OLDPWD", get_env_var(info, "PWD="));
-				unset_custom_env(info, "PWD", getcwd(buffer, 1024));
+				set_custom_env(info, "OLDPWD", get_env_var(info, "PWD="));
+				set_custom_env(info, "PWD", getcwd(buffer, 1024));
 			}
 			return (0);
 }
@@ -60,21 +59,21 @@ int exec_cd(info_t *info)
 
 int exec_exit(info_t *info)
 {
+	int parsed_num;
+
 	if (info->argc > 1)
 	{
-		char *arg = info->argv[1];
-		int parsed_num = error_atoi(arg);
-
+		parsed_num = error_atoi(info->argv[1]);
 		if (parsed_num == -1)
 		{
 			info->status = 2;
 			print_error(info, "Invalid number: ");
-			_ltput(arg);
+			_ltputs(info->argv[1]);
 			_ltputchar('\n');
 			return (1);
 		}
 
-		info->error_num = parsed_num;
+		info->error_num = error_atoi(info->argv[1]);
 		return (-2);
 	}
 
@@ -95,17 +94,19 @@ int exec_help(info_t *info)
 
 	cmd_args = info->argv;
 	_lvprint("Sorry, 'help' function is currently under development.\n");
+	if (0)
+		_lvprint(*cmd_args);
 	return (0);
 }
 
 /**
- * exic_cmd_history - Executes the command history from info structure.
+ * exec_cmd_history - Executes the command history from info structure.
  * @info: Pointer to the info structure containing command history.
  *
  * Return: Always returns 0 after displaying the command history.
  */
 
-int exic_cmd_history(info_t *info)
+int exec_cmd_history(info_t *info)
 {
 	print_list(info->history);
 	return (0);

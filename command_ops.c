@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * exec_cd - Function to change directory.
+ * exec_cd - A Function use to change a directory.
  * @info: Pointer to the struct containing information.
  *
  * Return: 0 on success, 1 on failure.
